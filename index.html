@@ -1,37 +1,988 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Nuestra Boda</title>
-<link rel="stylesheet" href="style.css">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invitación de Boda - Alejandro & _____</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --background: hsl(0, 0%, 100%);
+            --foreground: hsl(0, 0%, 3.9%);
+            --primary: hsl(0, 0%, 9%);
+            --primary-foreground: hsl(0, 0%, 98%);
+            --secondary: hsl(0, 0%, 96.1%);
+            --muted: hsl(0, 0%, 96.1%);
+            --muted-foreground: hsl(0, 0%, 45.1%);
+            --accent: hsl(0, 0%, 96.1%);
+            --border: hsl(0, 0%, 89.8%);
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: var(--background);
+            color: var(--foreground);
+            line-height: 1.5;
+            overflow-x: hidden;
+        }
+
+        .font-display {
+            font-family: Georgia, 'Times New Roman', serif;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 80px 16px;
+            overflow: hidden;
+        }
+
+        .hero-background {
+            position: absolute;
+            inset: 0;
+            opacity: 0.1;
+            background: 
+                repeating-linear-gradient(45deg, transparent, transparent 10px, var(--muted) 10px, var(--muted) 20px),
+                repeating-linear-gradient(-45deg, transparent, transparent 10px, var(--muted) 10px, var(--muted) 20px);
+        }
+
+        .decorative-line-top {
+            position: relative;
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 32px;
+        }
+
+        .line-vertical {
+            width: 1px;
+            height: 64px;
+            background: var(--primary);
+            opacity: 0.3;
+        }
+
+        .diamond-small {
+            width: 8px;
+            height: 8px;
+            border: 1px solid var(--primary);
+            transform: rotate(45deg);
+            opacity: 0.3;
+            margin-top: 8px;
+        }
+
+        .subtitle {
+            position: relative;
+            z-index: 10;
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.4em;
+            color: var(--muted-foreground);
+        }
+
+        .hero-names {
+            position: relative;
+            z-index: 10;
+            margin-top: 24px;
+            text-align: center;
+        }
+
+        .hero-names h1 {
+            font-family: Georgia, 'Times New Roman', serif;
+            font-size: clamp(3rem, 10vw, 6rem);
+            font-weight: 300;
+            line-height: 1.2;
+            letter-spacing: 0.05em;
+            color: var(--primary);
+        }
+
+        .ampersand {
+            display: block;
+            margin: 16px 0;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: clamp(1.5rem, 5vw, 2rem);
+            font-style: italic;
+            color: var(--accent);
+        }
+
+        .hero-date {
+            position: relative;
+            z-index: 10;
+            margin-top: 40px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .line-horizontal {
+            width: 80px;
+            height: 1px;
+            background: var(--primary);
+            opacity: 0.3;
+        }
+
+        .date-text {
+            font-size: clamp(1rem, 3vw, 1.25rem);
+            letter-spacing: 0.15em;
+            color: var(--muted-foreground);
+            white-space: nowrap;
+        }
+
+        .hero-image-container {
+            position: relative;
+            z-index: 10;
+            margin-top: 56px;
+            width: 100%;
+            max-width: 600px;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+
+        .hero-image-container::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 16px;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            pointer-events: none;
+        }
+
+        .hero-image {
+            width: 100%;
+            height: auto;
+            display: block;
+            background: var(--muted);
+            aspect-ratio: 3/2;
+        }
+
+        .scroll-indicator {
+            position: relative;
+            z-index: 10;
+            margin-top: 64px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            animation: bounce 2s infinite;
+        }
+
+        .scroll-text {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.3em;
+            color: var(--muted-foreground);
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        /* Section Divider */
+        .section-divider {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            padding: 16px 0;
+        }
+
+        .divider-line {
+            width: 64px;
+            height: 1px;
+            background: var(--border);
+        }
+
+        .divider-diamond {
+            width: 8px;
+            height: 8px;
+            border: 1px solid var(--accent);
+            transform: rotate(45deg);
+        }
+
+        /* Countdown Section */
+        .countdown-section {
+            padding: 80px 16px;
+        }
+
+        .countdown-container {
+            max-width: 768px;
+            margin: 0 auto;
+        }
+
+        .countdown-card {
+            background: var(--background);
+            border-radius: 24px;
+            padding: 56px 24px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .decorative-small {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 32px;
+        }
+
+        .decorative-small .line {
+            width: 32px;
+            height: 1px;
+            background: var(--accent);
+        }
+
+        .decorative-small .dot {
+            width: 6px;
+            height: 6px;
+            background: var(--accent);
+            transform: rotate(45deg);
+        }
+
+        .countdown-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.4em;
+            color: var(--muted-foreground);
+        }
+
+        .countdown-timer {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: clamp(12px, 3vw, 24px);
+            margin-top: 32px;
+        }
+
+        .countdown-unit {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .countdown-value {
+            font-family: Georgia, 'Times New Roman', serif;
+            font-size: clamp(2.5rem, 8vw, 4rem);
+            font-weight: 300;
+            letter-spacing: 0.05em;
+            color: var(--primary);
+        }
+
+        .countdown-unit-label {
+            margin-top: 4px;
+            font-size: clamp(0.75rem, 2vw, 0.875rem);
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: var(--muted-foreground);
+        }
+
+        .countdown-colon {
+            font-size: clamp(2rem, 6vw, 3rem);
+            font-weight: 300;
+            color: var(--accent);
+        }
+
+        .countdown-message {
+            margin-top: 40px;
+            text-align: center;
+            font-size: clamp(1rem, 3vw, 1.25rem);
+            font-style: italic;
+            line-height: 1.6;
+            color: var(--muted-foreground);
+        }
+
+        /* Section Header */
+        .section-header {
+            margin-bottom: 64px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .section-subtitle {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.4em;
+            color: var(--muted-foreground);
+        }
+
+        .section-title {
+            margin-top: 16px;
+            font-family: Georgia, 'Times New Roman', serif;
+            font-size: clamp(1.875rem, 5vw, 3rem);
+            font-weight: 300;
+            letter-spacing: 0.05em;
+            color: var(--primary);
+            max-width: 600px;
+        }
+
+        .section-line {
+            margin-top: 24px;
+            width: 64px;
+            height: 1px;
+            background: var(--accent);
+        }
+
+        /* Photo Gallery */
+        .gallery-section {
+            padding: 80px 16px;
+        }
+
+        .gallery-container {
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+
+        @media (min-width: 768px) {
+            .gallery-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 20px;
+            }
+        }
+
+        .gallery-item {
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        .gallery-item-large {
+            grid-column: span 2;
+            grid-row: span 2;
+        }
+
+        .gallery-item-wide {
+            grid-column: span 2;
+        }
+
+        .gallery-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            background: var(--muted);
+            transition: transform 0.7s;
+        }
+
+        .gallery-item:hover .gallery-image {
+            transform: scale(1.05);
+        }
+
+        .gallery-placeholder {
+            aspect-ratio: 1/1;
+            background: rgba(0, 0, 0, 0.03);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            color: var(--muted-foreground);
+        }
+
+        .gallery-placeholder-wide {
+            aspect-ratio: 2/1;
+        }
+
+        .gallery-placeholder-large {
+            aspect-ratio: 4/3;
+        }
+
+        .placeholder-icon {
+            width: 32px;
+            height: 32px;
+            stroke: currentColor;
+            stroke-width: 1;
+            fill: none;
+        }
+
+        .placeholder-text {
+            font-size: 0.75rem;
+            letter-spacing: 0.05em;
+        }
+
+        /* Event Details */
+        .details-section {
+            position: relative;
+            padding: 80px 16px;
+        }
+
+        .details-background {
+            position: absolute;
+            inset: 0;
+            opacity: 0.05;
+            background: 
+                repeating-linear-gradient(45deg, transparent, transparent 10px, var(--muted) 10px, var(--muted) 20px),
+                repeating-linear-gradient(-45deg, transparent, transparent 10px, var(--muted) 10px, var(--muted) 20px);
+        }
+
+        .details-container {
+            position: relative;
+            z-index: 10;
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        .details-grid {
+            display: grid;
+            gap: 24px;
+        }
+
+        @media (min-width: 768px) {
+            .details-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .detail-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            background: var(--background);
+            border-radius: 16px;
+            padding: 40px 24px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .detail-icon {
+            width: 56px;
+            height: 56px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--secondary);
+            border-radius: 50%;
+        }
+
+        .detail-icon svg {
+            width: 24px;
+            height: 24px;
+            stroke: var(--primary);
+            stroke-width: 2;
+            fill: none;
+        }
+
+        .detail-title {
+            margin-top: 20px;
+            font-family: Georgia, 'Times New Roman', serif;
+            font-size: 1.25rem;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            color: var(--primary);
+        }
+
+        .detail-content {
+            margin-top: 12px;
+            line-height: 1.6;
+            color: var(--muted-foreground);
+        }
+
+        .detail-content strong {
+            color: var(--foreground);
+            font-weight: 600;
+        }
+
+        .detail-content .time-info {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            margin-top: 8px;
+        }
+
+        .detail-content .time-info svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        .detail-content .small-note {
+            margin-top: 4px;
+            font-size: 0.875rem;
+            font-style: italic;
+        }
+
+        .venue-image-container {
+            margin: 56px auto 0;
+            max-width: 768px;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        .venue-image {
+            width: 100%;
+            aspect-ratio: 16/9;
+            object-fit: cover;
+            background: var(--muted);
+        }
+
+        /* RSVP Section */
+        .rsvp-section {
+            position: relative;
+            padding: 80px 16px;
+        }
+
+        .rsvp-background {
+            position: absolute;
+            inset: 0;
+            opacity: 0.1;
+            background: 
+                repeating-linear-gradient(45deg, transparent, transparent 10px, var(--muted) 10px, var(--muted) 20px),
+                repeating-linear-gradient(-45deg, transparent, transparent 10px, var(--muted) 10px, var(--muted) 20px);
+        }
+
+        .rsvp-container {
+            position: relative;
+            z-index: 10;
+            max-width: 672px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .rsvp-description {
+            margin-top: 24px;
+            max-width: 448px;
+            font-size: clamp(1rem, 2.5vw, 1.125rem);
+            line-height: 1.6;
+            color: var(--muted-foreground);
+        }
+
+        .whatsapp-button {
+            margin-top: 40px;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: var(--primary);
+            color: var(--primary-foreground);
+            padding: 16px 40px;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            text-decoration: none;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s;
+        }
+
+        .whatsapp-button:hover {
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+            transform: scale(1.05);
+        }
+
+        .whatsapp-icon {
+            width: 20px;
+            height: 20px;
+            fill: currentColor;
+        }
+
+        .contact-info {
+            margin-top: 32px;
+            font-size: 0.875rem;
+            color: var(--muted-foreground);
+        }
+
+        .contact-info strong {
+            font-weight: 500;
+            color: var(--foreground);
+        }
+
+        /* Footer */
+        .footer {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 16px;
+            padding: 24px 16px 40px;
+        }
+
+        .footer-names {
+            font-family: Georgia, 'Times New Roman', serif;
+            font-size: 1.5rem;
+            font-weight: 300;
+            letter-spacing: 0.1em;
+            color: var(--primary);
+        }
+
+        .footer-date {
+            font-size: 0.875rem;
+            letter-spacing: 0.1em;
+            color: var(--muted-foreground);
+        }
+
+        .footer-message {
+            margin-top: 8px;
+            font-size: 0.75rem;
+            color: rgba(0, 0, 0, 0.4);
+        }
+    </style>
 </head>
 <body>
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-background"></div>
+        
+        <div class="decorative-line-top">
+            <div class="line-vertical"></div>
+            <div class="diamond-small"></div>
+        </div>
 
-<!-- Música -->
-<audio id="musica" loop>
-  <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_5e3b1e6a4f.mp3?filename=wedding-piano-110624.mp3" type="audio/mp3">
-</audio>
+        <p class="subtitle">Nos Casamos</p>
 
-<button id="musicBtn" class="music-btn">🎵 Activar música</button>
+        <div class="hero-names">
+            <h1>
+                Alejandro
+                <span class="ampersand">&</span>
+                _____
+            </h1>
+        </div>
 
-<section class="hero">
-  <h1>Nos Casamos</h1>
-  <h2>ALEJANDRO & ___</h2>
-  <p class="fecha">20 de Diciembre 2026</p>
+        <div class="hero-date">
+            <div class="line-horizontal"></div>
+            <p class="date-text">20 de Diciembre, 2026</p>
+            <div class="line-horizontal"></div>
+        </div>
 
-  <div class="contador" id="contador"></div>
+        <div class="hero-image-container">
+            <div class="hero-image"></div>
+        </div>
 
-  <a class="btn" href="https://wa.me/573000000000?text=Confirmo%20mi%20asistencia%20a%20la%20boda" target="_blank">
-    Confirmar asistencia
-  </a>
-</section>
+        <div class="scroll-indicator">
+            <span class="scroll-text">Desliza</span>
+            <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="1.5" fill="none">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19 14l-7 7m0 0l-7-7"/>
+            </svg>
+        </div>
+    </section>
 
-<footer>
-  Con amor 💍
-</footer>
+    <!-- Divider -->
+    <div class="section-divider">
+        <div class="divider-line"></div>
+        <div class="divider-diamond"></div>
+        <div class="divider-line"></div>
+    </div>
 
-<script src="script.js"></script>
+    <!-- Countdown Section -->
+    <section class="countdown-section">
+        <div class="countdown-container">
+            <div class="countdown-card">
+                <div class="decorative-small">
+                    <div class="line"></div>
+                    <div class="dot"></div>
+                    <div class="line"></div>
+                </div>
+
+                <p class="countdown-label">Faltan</p>
+
+                <div class="countdown-timer" id="countdown">
+                    <div class="countdown-unit">
+                        <span class="countdown-value" id="days">00</span>
+                        <span class="countdown-unit-label">Dias</span>
+                    </div>
+                    <span class="countdown-colon">:</span>
+                    <div class="countdown-unit">
+                        <span class="countdown-value" id="hours">00</span>
+                        <span class="countdown-unit-label">Horas</span>
+                    </div>
+                    <span class="countdown-colon">:</span>
+                    <div class="countdown-unit">
+                        <span class="countdown-value" id="minutes">00</span>
+                        <span class="countdown-unit-label">Min</span>
+                    </div>
+                    <span class="countdown-colon">:</span>
+                    <div class="countdown-unit">
+                        <span class="countdown-value" id="seconds">00</span>
+                        <span class="countdown-unit-label">Seg</span>
+                    </div>
+                </div>
+
+                <p class="countdown-message">Para el dia mas especial de nuestras vidas</p>
+
+                <div class="decorative-small" style="margin-top: 32px; margin-bottom: 0;">
+                    <div class="line"></div>
+                    <div class="dot"></div>
+                    <div class="line"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Divider -->
+    <div class="section-divider">
+        <div class="divider-line"></div>
+        <div class="divider-diamond"></div>
+        <div class="divider-line"></div>
+    </div>
+
+    <!-- Photo Gallery -->
+    <section class="gallery-section">
+        <div class="gallery-container">
+            <div class="section-header">
+                <p class="section-subtitle">Nuestra historia</p>
+                <h2 class="section-title">Un amor que crece cada dia</h2>
+                <div class="section-line"></div>
+            </div>
+
+            <div class="gallery-grid">
+                <div class="gallery-item gallery-item-large">
+                    <div class="gallery-image gallery-placeholder gallery-placeholder-large">
+                        <svg class="placeholder-icon" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909M3.75 21h16.5A2.25 2.25 0 0022.5 18.75V5.25A2.25 2.25 0 0020.25 3H3.75A2.25 2.25 0 001.5 5.25v13.5A2.25 2.25 0 003.75 21z"/>
+                        </svg>
+                        <span class="placeholder-text">Tu foto aqui</span>
+                    </div>
+                </div>
+
+                <div class="gallery-item">
+                    <div class="gallery-image gallery-placeholder">
+                        <svg class="placeholder-icon" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909M3.75 21h16.5A2.25 2.25 0 0022.5 18.75V5.25A2.25 2.25 0 0020.25 3H3.75A2.25 2.25 0 001.5 5.25v13.5A2.25 2.25 0 003.75 21z"/>
+                        </svg>
+                        <span class="placeholder-text">Tu foto aqui</span>
+                    </div>
+                </div>
+
+                <div class="gallery-item">
+                    <div class="gallery-image gallery-placeholder">
+                        <svg class="placeholder-icon" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909M3.75 21h16.5A2.25 2.25 0 0022.5 18.75V5.25A2.25 2.25 0 0020.25 3H3.75A2.25 2.25 0 001.5 5.25v13.5A2.25 2.25 0 003.75 21z"/>
+                        </svg>
+                        <span class="placeholder-text">Tu foto aqui</span>
+                    </div>
+                </div>
+
+                <div class="gallery-item">
+                    <div class="gallery-image gallery-placeholder">
+                        <svg class="placeholder-icon" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909M3.75 21h16.5A2.25 2.25 0 0022.5 18.75V5.25A2.25 2.25 0 0020.25 3H3.75A2.25 2.25 0 001.5 5.25v13.5A2.25 2.25 0 003.75 21z"/>
+                        </svg>
+                        <span class="placeholder-text">Tu foto aqui</span>
+                    </div>
+                </div>
+
+                <div class="gallery-item gallery-item-wide">
+                    <div class="gallery-image gallery-placeholder gallery-placeholder-wide">
+                        <svg class="placeholder-icon" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909M3.75 21h16.5A2.25 2.25 0 0022.5 18.75V5.25A2.25 2.25 0 0020.25 3H3.75A2.25 2.25 0 001.5 5.25v13.5A2.25 2.25 0 003.75 21z"/>
+                        </svg>
+                        <span class="placeholder-text">Tu foto aqui</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Divider -->
+    <div class="section-divider">
+        <div class="divider-line"></div>
+        <div class="divider-diamond"></div>
+        <div class="divider-line"></div>
+    </div>
+
+    <!-- Event Details -->
+    <section class="details-section">
+        <div class="details-background"></div>
+        
+        <div class="details-container">
+            <div class="section-header">
+                <p class="section-subtitle">Detalles del evento</p>
+                <h2 class="section-title">Todo lo que necesitas saber</h2>
+                <div class="section-line"></div>
+            </div>
+
+            <div class="details-grid">
+                <div class="detail-card">
+                    <div class="detail-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M8 17.5L4 13.5L5.5 12L8 14.5L12.5 10L14 11.5L8 17.5Z"/>
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 3L4 7V13C4 17.5 12 21 12 21C12 21 20 17.5 20 13V7L12 3Z"/>
+                        </svg>
+                    </div>
+                    <h3 class="detail-title">Ceremonia</h3>
+                    <div class="detail-content">
+                        <p><strong>Iglesia San Francisco</strong></p>
+                        <p>Calle 10 #5-30, Centro</p>
+                        <p class="time-info">
+                            <svg viewBox="0 0 24 24">
+                                <circle cx="12" cy="12" r="10"/>
+                                <path d="M12 6v6l4 2"/>
+                            </svg>
+                            3:00 PM
+                        </p>
+                    </div>
+                </div>
+
+                <div class="detail-card">
+                    <div class="detail-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M21 11c0 5.5-4.5 10-10 10S1 16.5 1 11c0-5.5 4.5-10 10-10 2.5 0 4.8.9 6.5 2.5"/>
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M15 2v4h4"/>
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M8 11h6"/>
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M11 8v6"/>
+                        </svg>
+                    </div>
+                    <h3 class="detail-title">Recepcion</h3>
+                    <div class="detail-content">
+                        <p><strong>Hacienda Los Rosales</strong></p>
+                        <p>Km 5 Via al Sur</p>
+                        <p class="time-info">
+                            <svg viewBox="0 0 24 24">
+                                <circle cx="12" cy="12" r="10"/>
+                                <path d="M12 6v6l4 2"/>
+                            </svg>
+                            6:00 PM
+                        </p>
+                    </div>
+                </div>
+
+                <div class="detail-card">
+                    <div class="detail-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/>
+                            <circle cx="12" cy="10" r="3"/>
+                        </svg>
+                    </div>
+                    <h3 class="detail-title">Codigo de vestimenta</h3>
+                    <div class="detail-content">
+                        <p><strong>Formal / Etiqueta</strong></p>
+                        <p>Colores sugeridos: tonos neutros, pasteles</p>
+                        <p class="small-note">Evita el color blanco, por favor</p>
+                    </div>
+                </div>
+
+                <div class="detail-card">
+                    <div class="detail-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/>
+                            <circle cx="12" cy="10" r="3"/>
+                        </svg>
+                    </div>
+                    <h3 class="detail-title">Mesa de regalos</h3>
+                    <div class="detail-content">
+                        <p><strong>Liverpool & Amazon</strong></p>
+                        <p>Evento: Boda Alejandro & _____</p>
+                        <p class="small-note" style="margin-top: 8px;">Tu presencia es nuestro mejor regalo</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="venue-image-container">
+                <div class="venue-image"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Divider -->
+    <div class="section-divider">
+        <div class="divider-line"></div>
+        <div class="divider-diamond"></div>
+        <div class="divider-line"></div>
+    </div>
+
+    <!-- RSVP Section -->
+    <section class="rsvp-section">
+        <div class="rsvp-background"></div>
+
+        <div class="rsvp-container">
+            <p class="section-subtitle">Confirma tu asistencia</p>
+            <h2 class="section-title">Te esperamos</h2>
+            
+            <p class="rsvp-description">
+                Seria un honor contar con tu presencia en este dia tan especial. Por favor confirma tu asistencia antes del 1 de Diciembre de 2026.
+            </p>
+
+            <div class="section-line"></div>
+
+            <a href="https://wa.me/573001234567?text=Confirmo%20mi%20asistencia%20a%20la%20boda" 
+               target="_blank" 
+               rel="noopener noreferrer"
+               class="whatsapp-button">
+                <svg class="whatsapp-icon" viewBox="0 0 24 24">
+                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                </svg>
+                Confirmar por WhatsApp
+            </a>
+
+            <p class="contact-info">
+                O comunicate con nosotros al 
+                <strong>+57 300 123 4567</strong>
+            </p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="decorative-small">
+            <div class="line"></div>
+            <div class="dot"></div>
+            <div class="line"></div>
+        </div>
+
+        <p class="footer-names">A & _____</p>
+        <p class="footer-date">20 . 12 . 2026</p>
+        <p class="footer-message">Con todo nuestro amor</p>
+    </footer>
+
+    <script>
+        // Countdown Timer
+        function updateCountdown() {
+            const weddingDate = new Date('Dec 20, 2026 00:00:00').getTime();
+            const now = new Date().getTime();
+            const distance = weddingDate - now;
+
+            if (distance < 0) {
+                document.getElementById('days').textContent = '00';
+                document.getElementById('hours').textContent = '00';
+                document.getElementById('minutes').textContent = '00';
+                document.getElementById('seconds').textContent = '00';
+                return;
+            }
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById('days').textContent = String(days).padStart(2, '0');
+            document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+            document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+            document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+        }
+
+        // Update countdown immediately and then every second
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+
+        // Smooth scroll for the scroll indicator
+        document.querySelector('.scroll-indicator').addEventListener('click', function() {
+            window.scrollTo({
+                top: window.innerHeight,
+                behavior: 'smooth'
+            });
+        });
+    </script>
 </body>
 </html>
