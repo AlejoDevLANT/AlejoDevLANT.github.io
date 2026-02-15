@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Invitación de Boda - Alejandro & _____</title>
+    <!-- Font Awesome para iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
             margin: 0;
@@ -1105,12 +1107,9 @@
             z-index: 2;
         }
         
-        .itinerary-icon svg {
-            width: 45px;
-            height: 45px;
-            stroke: var(--turquoise-dark);
-            stroke-width: 1.5;
-            fill: none;
+        .itinerary-icon i {
+            font-size: 40px;
+            color: var(--turquoise-dark);
             filter: drop-shadow(0 2px 4px rgba(100, 201, 184, 0.3));
         }
         
@@ -1166,9 +1165,8 @@
                 height: 50px;
             }
             
-            .itinerary-icon svg {
-                width: 38px;
-                height: 38px;
+            .itinerary-icon i {
+                font-size: 32px;
             }
             
             .itinerary-timeline::before {
@@ -1826,10 +1824,7 @@
                     <!-- Ceremonia -->
                     <div class="itinerary-item">
                         <div class="itinerary-icon">
-                            <svg viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4M12 16h.01"/>
-                            </svg>
+                            <i class="fa-solid fa-church"></i>
                         </div>
                         <div class="itinerary-dot"></div>
                         <div class="itinerary-content">
@@ -1840,12 +1835,7 @@
                     <!-- Sí quiero -->
                     <div class="itinerary-item">
                         <div class="itinerary-icon">
-                            <svg viewBox="0 0 24 24">
-                                <circle cx="9" cy="9" r="5"/>
-                                <circle cx="15" cy="9" r="5"/>
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M9 14v-2M15 14v-2"/>
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M5 18c0-2 2-3 4-3h6c2 0 4 1 4 3"/>
-                            </svg>
+                            <i class="fa-solid fa-ring"></i>
                         </div>
                         <div class="itinerary-dot"></div>
                         <div class="itinerary-content">
@@ -1856,11 +1846,7 @@
                     <!-- Brindis -->
                     <div class="itinerary-item">
                         <div class="itinerary-icon">
-                            <svg viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 3l-2 7h5l-2-7zM13 3l-2 7h5l-2-7z"/>
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M7 10v5c0 1.1.9 2 2 2h0c1.1 0 2-.9 2-2v-5M16 10v5c0 1.1.9 2 2 2h0c1.1 0 2-.9 2-2v-5"/>
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M9 17v4M18 17v4M7 21h4M16 21h4"/>
-                            </svg>
+                            <i class="fa-solid fa-champagne-glasses"></i>
                         </div>
                         <div class="itinerary-dot"></div>
                         <div class="itinerary-content">
@@ -1871,10 +1857,7 @@
                     <!-- Intervención -->
                     <div class="itinerary-item">
                         <div class="itinerary-icon">
-                            <svg viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M19 11H5M19 11c0 3.866-3.582 7-8 7M19 11V9M5 11c0 3.866 3.582 7 8 7M5 11V9M11 18v4M8 22h6"/>
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 2v7"/>
-                            </svg>
+                            <i class="fa-solid fa-microphone"></i>
                         </div>
                         <div class="itinerary-dot"></div>
                         <div class="itinerary-content">
@@ -1885,10 +1868,7 @@
                     <!-- Cóctel de bienvenida -->
                     <div class="itinerary-item">
                         <div class="itinerary-icon">
-                            <svg viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M3 3h18v4L12 16v5M8 21h8"/>
-                                <circle cx="12" cy="10" r="1.5"/>
-                            </svg>
+                            <i class="fa-solid fa-martini-glass-citrus"></i>
                         </div>
                         <div class="itinerary-dot"></div>
                         <div class="itinerary-content">
@@ -1899,10 +1879,7 @@
                     <!-- Aperitivos -->
                     <div class="itinerary-item">
                         <div class="itinerary-icon">
-                            <svg viewBox="0 0 24 24">
-                                <circle cx="12" cy="12" r="9"/>
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M8 12h8M12 8v8"/>
-                            </svg>
+                            <i class="fa-solid fa-plate-wheat"></i>
                         </div>
                         <div class="itinerary-dot"></div>
                         <div class="itinerary-content">
@@ -1913,10 +1890,7 @@
                     <!-- Comida -->
                     <div class="itinerary-item">
                         <div class="itinerary-icon">
-                            <svg viewBox="0 0 24 24">
-                                <circle cx="12" cy="12" r="8"/>
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6l4 2"/>
-                            </svg>
+                            <i class="fa-solid fa-utensils"></i>
                         </div>
                         <div class="itinerary-dot"></div>
                         <div class="itinerary-content">
@@ -1927,11 +1901,7 @@
                     <!-- Pastel -->
                     <div class="itinerary-item">
                         <div class="itinerary-icon">
-                            <svg viewBox="0 0 24 24">
-                                <rect x="3" y="11" width="18" height="11" rx="2"/>
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M7 11V7l2-2 2 2v4M13 11V7l2-2 2 2v4"/>
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M3 16h18"/>
-                            </svg>
+                            <i class="fa-solid fa-cake-candles"></i>
                         </div>
                         <div class="itinerary-dot"></div>
                         <div class="itinerary-content">
