@@ -1,0 +1,88 @@
+body {
+  margin: 0;
+  background: #ffffff;
+  color: #111;
+  font-family: 'Inter', sans-serif;
+  text-align: center;
+}
+
+.hero {
+  padding: 120px 20px;
+  animation: fadeUp 1.5s ease forwards;
+  opacity: 0;
+}
+
+h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 52px;
+  font-weight: 400;
+  margin-bottom: 10px;
+}
+
+h2 {
+  font-size: 28px;
+  font-weight: 300;
+  letter-spacing: 3px;
+}
+
+.fecha {
+  margin-top: 10px;
+  font-size: 18px;
+  color: #666;
+}
+
+.contador {
+  margin: 40px 0;
+  font-size: 24px;
+  font-weight: 300;
+}
+
+.btn {
+  display: inline-block;
+  padding: 14px 28px;
+  border: 1px solid black;
+  text-decoration: none;
+  color: black;
+  border-radius: 30px;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  background: black;
+  color: white;
+}
+
+.music-btn {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  padding: 8px 15px;
+  border: none;
+  background: black;
+  color: white;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+footer {
+  margin-top: 100px;
+  padding: 20px;
+  font-size: 14px;
+  color: #aaa;
+}
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  from {
+    transform: translateY(30px);
+  }
+}
+
+@media (max-width: 600px) {
+  h1 {
+    font-size: 36px;
+  }
+}
