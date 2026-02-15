@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Invitación de Boda - JESUS & YULEIMA</title>
+    <title>Invitación de Boda - Alejandro & _____</title>
     <style>
         * {
             margin: 0;
@@ -1012,6 +1012,176 @@
             color: rgba(0, 0, 0, 0.4);
         }
         
+        /* Itinerario Section */
+        .itinerary-section {
+            padding: 80px 16px;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(100, 201, 184, 0.12) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(100, 201, 184, 0.1) 0%, transparent 50%),
+                linear-gradient(135deg, rgba(229, 249, 247, 0.6) 0%, rgba(195, 236, 231, 0.5) 50%, rgba(229, 249, 247, 0.6) 100%);
+            position: relative;
+        }
+        
+        .itinerary-section::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: 
+                url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><g opacity="0.04" fill="%2364C9B8"><circle cx="50" cy="50" r="3"/><circle cx="150" cy="150" r="2"/><path d="M30,80 Q40,70 50,80 T70,80"/></g></svg>');
+            background-size: 200px 200px;
+        }
+        
+        .itinerary-container {
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 10;
+        }
+        
+        .itinerary-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(249, 254, 253, 0.9) 100%);
+            backdrop-filter: blur(20px);
+            border-radius: 30px;
+            padding: 60px 40px;
+            box-shadow: 
+                0 30px 80px rgba(100, 201, 184, 0.2),
+                0 0 0 1px rgba(100, 201, 184, 0.15),
+                inset 0 2px 30px rgba(255, 255, 255, 0.9);
+            border: 2px solid rgba(100, 201, 184, 0.2);
+        }
+        
+        .itinerary-title {
+            font-family: 'Great Vibes', cursive;
+            font-size: clamp(2.5rem, 7vw, 4rem);
+            font-weight: 400;
+            text-align: center;
+            color: var(--turquoise-dark);
+            margin-bottom: 50px;
+            text-shadow: 0 2px 4px rgba(100, 201, 184, 0.2);
+        }
+        
+        .itinerary-timeline {
+            position: relative;
+            padding: 20px 0;
+        }
+        
+        /* Línea vertical del timeline */
+        .itinerary-timeline::before {
+            content: '';
+            position: absolute;
+            left: 60px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, 
+                transparent 0%, 
+                var(--turquoise) 5%, 
+                var(--turquoise) 95%, 
+                transparent 100%);
+        }
+        
+        .itinerary-item {
+            position: relative;
+            padding-left: 120px;
+            margin-bottom: 45px;
+            display: flex;
+            align-items: center;
+            min-height: 70px;
+        }
+        
+        .itinerary-item:last-child {
+            margin-bottom: 0;
+        }
+        
+        /* Icono del evento */
+        .itinerary-icon {
+            position: absolute;
+            left: 0;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2;
+        }
+        
+        .itinerary-icon svg {
+            width: 45px;
+            height: 45px;
+            stroke: var(--turquoise-dark);
+            stroke-width: 1.5;
+            fill: none;
+            filter: drop-shadow(0 2px 4px rgba(100, 201, 184, 0.3));
+        }
+        
+        /* Punto en la línea */
+        .itinerary-dot {
+            position: absolute;
+            left: 51px;
+            width: 18px;
+            height: 18px;
+            background: var(--turquoise);
+            border: 3px solid white;
+            border-radius: 50%;
+            box-shadow: 
+                0 0 0 3px rgba(100, 201, 184, 0.2),
+                0 4px 8px rgba(100, 201, 184, 0.3);
+            z-index: 1;
+        }
+        
+        /* Contenido del evento */
+        .itinerary-content {
+            flex: 1;
+        }
+        
+        .itinerary-event-name {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-size: clamp(1.25rem, 3vw, 1.5rem);
+            font-weight: 500;
+            color: var(--primary);
+            margin-bottom: 5px;
+            letter-spacing: 0.02em;
+        }
+        
+        .itinerary-event-time {
+            font-family: 'Raleway', sans-serif;
+            font-size: 0.875rem;
+            color: var(--muted-foreground);
+            letter-spacing: 0.05em;
+        }
+        
+        @media (max-width: 768px) {
+            .itinerary-card {
+                padding: 40px 25px;
+            }
+            
+            .itinerary-item {
+                padding-left: 100px;
+                min-height: 60px;
+                margin-bottom: 35px;
+            }
+            
+            .itinerary-icon {
+                width: 50px;
+                height: 50px;
+            }
+            
+            .itinerary-icon svg {
+                width: 38px;
+                height: 38px;
+            }
+            
+            .itinerary-timeline::before {
+                left: 50px;
+            }
+            
+            .itinerary-dot {
+                left: 43px;
+                width: 14px;
+                height: 14px;
+            }
+        }
+        
         /* Animaciones de entrada */
         @keyframes fadeInUp {
             from {
@@ -1524,9 +1694,9 @@
 
         <div class="hero-names">
             <h1>
-                JESUS 
+                Alejandro
                 <span class="ampersand">&</span>
-                YULEIMA
+                _____
             </h1>
         </div>
 
@@ -1537,7 +1707,7 @@
         </div>
 
         <div class="hero-image-container">
-            <img src="https://raw.githubusercontent.com/AlejoDevLANT/AlejoDevLANT.github.io/main/imagenprovisional.jpg" class="hero-image" alt="Jesus y Yuleima">
+            <div class="hero-image"></div>
         </div>
 
         <div class="scroll-indicator">
@@ -1646,6 +1816,144 @@
         <div class="divider-line"></div>
     </div>
 
+    <!-- Itinerario Section -->
+    <section class="itinerary-section">
+        <div class="itinerary-container">
+            <div class="itinerary-card">
+                <h2 class="itinerary-title">Itinerario</h2>
+                
+                <div class="itinerary-timeline">
+                    <!-- Ceremonia -->
+                    <div class="itinerary-item">
+                        <div class="itinerary-icon">
+                            <svg viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 3L4 7V13C4 17.5 12 21 12 21C12 21 20 17.5 20 13V7L12 3Z"/>
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M8 13L10.5 15.5L16 10"/>
+                            </svg>
+                        </div>
+                        <div class="itinerary-dot"></div>
+                        <div class="itinerary-content">
+                            <h3 class="itinerary-event-name">Ceremonia</h3>
+                        </div>
+                    </div>
+
+                    <!-- Sí quiero -->
+                    <div class="itinerary-item">
+                        <div class="itinerary-icon">
+                            <svg viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                            </svg>
+                        </div>
+                        <div class="itinerary-dot"></div>
+                        <div class="itinerary-content">
+                            <h3 class="itinerary-event-name">¡Sí quiero!</h3>
+                        </div>
+                    </div>
+
+                    <!-- Brindis -->
+                    <div class="itinerary-item">
+                        <div class="itinerary-icon">
+                            <svg viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M5 3h14M8 3v3l-2 10c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2L16 6V3"/>
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M9 21h6"/>
+                                <circle cx="12" cy="9" r="1"/>
+                            </svg>
+                        </div>
+                        <div class="itinerary-dot"></div>
+                        <div class="itinerary-content">
+                            <h3 class="itinerary-event-name">Brindis</h3>
+                        </div>
+                    </div>
+
+                    <!-- Intervención -->
+                    <div class="itinerary-item">
+                        <div class="itinerary-icon">
+                            <svg viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 18.5c-3.5 0-6.5-1-6.5-4V8c0-3 3-4 6.5-4s6.5 1 6.5 4v6.5c0 3-3 4-6.5 4z"/>
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 18.5v3M8 21.5h8"/>
+                                <line x1="9" y1="9" x2="9" y2="13"/>
+                                <line x1="15" y1="9" x2="15" y2="13"/>
+                            </svg>
+                        </div>
+                        <div class="itinerary-dot"></div>
+                        <div class="itinerary-content">
+                            <h3 class="itinerary-event-name">Intervención</h3>
+                        </div>
+                    </div>
+
+                    <!-- Cóctel de bienvenida -->
+                    <div class="itinerary-item">
+                        <div class="itinerary-icon">
+                            <svg viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M5 9l7 7 7-7"/>
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 16v6"/>
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M8 22h8"/>
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M3 3h18v6H3z"/>
+                            </svg>
+                        </div>
+                        <div class="itinerary-dot"></div>
+                        <div class="itinerary-content">
+                            <h3 class="itinerary-event-name">Cóctel de Bienvenida</h3>
+                        </div>
+                    </div>
+
+                    <!-- Aperitivos -->
+                    <div class="itinerary-item">
+                        <div class="itinerary-icon">
+                            <svg viewBox="0 0 24 24">
+                                <circle cx="12" cy="8" r="7"/>
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 15L8 21h8l-4-6z"/>
+                            </svg>
+                        </div>
+                        <div class="itinerary-dot"></div>
+                        <div class="itinerary-content">
+                            <h3 class="itinerary-event-name">Aperitivos</h3>
+                        </div>
+                    </div>
+
+                    <!-- Comida -->
+                    <div class="itinerary-item">
+                        <div class="itinerary-icon">
+                            <svg viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M3 12h8M21 12h-8"/>
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M8 3C8 3 4 6 4 12s4 9 4 9"/>
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M20 3c0 0-4 3-4 9s4 9 4 9"/>
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v18"/>
+                            </svg>
+                        </div>
+                        <div class="itinerary-dot"></div>
+                        <div class="itinerary-content">
+                            <h3 class="itinerary-event-name">Comida</h3>
+                        </div>
+                    </div>
+
+                    <!-- Pastel -->
+                    <div class="itinerary-item">
+                        <div class="itinerary-icon">
+                            <svg viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M20 21v-8a2 2 0 00-2-2H6a2 2 0 00-2 2v8"/>
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M4 16h16M4 21h16"/>
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v8"/>
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M9 6l3-3 3 3"/>
+                            </svg>
+                        </div>
+                        <div class="itinerary-dot"></div>
+                        <div class="itinerary-content">
+                            <h3 class="itinerary-event-name">Pastel</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Divider -->
+    <div class="section-divider">
+        <div class="divider-line"></div>
+        <div class="divider-diamond"></div>
+        <div class="divider-line"></div>
+    </div>
+
     <!-- Photo Gallery -->
     <section class="gallery-section">
         <div class="gallery-container">
@@ -1695,7 +2003,7 @@
                             <svg class="placeholder-icon" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909M3.75 21h16.5A2.25 2.25 0 0022.5 18.75V5.25A2.25 2.25 0 0020.25 3H3.75A2.25 2.25 0 001.5 5.25v13.5A2.25 2.25 0 003.75 21z"/>
                             </svg>
-                             <img src="https://raw.githubusercontent.com/AlejoDevLANT/AlejoDevLANT.github.io/main/imagenprovisional.jpg" class="hero-image" alt="Jesus y Yuleima">
+                            <span class="placeholder-text">Tu foto aqui</span>
                         </div>
                     </div>
 
