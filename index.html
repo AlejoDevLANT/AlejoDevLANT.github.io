@@ -1,40 +1,37 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-    <title>Invitación de Boda</title>
-    <meta charset="UTF-8">
-    <style>
-        body {
-            font-family: Arial;
-            text-align: center;
-            background-color: #fce4ec;
-            padding: 50px;
-        }
-        h1 {
-            color: #880e4f;
-            font-size: 40px;
-        }
-        p {
-            font-size: 20px;
-        }
-        .card {
-            background: white;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0px 5px 15px rgba(0,0,0,0.2);
-            display: inline-block;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nuestra Boda</title>
+<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Inter:wght@300;400&display=swap" rel="stylesheet">
 </head>
 <body>
 
-<div class="card">
-    <h1>Nos Casamos 💍</h1>
-    <p><strong>Alejandro</strong> & <strong>___</strong></p>
-    <p>Fecha: 20 de Diciembre 2026</p>
-    <p>Lugar: Salón de Eventos</p>
-    <p>¡Te esperamos!</p>
-</div>
+<!-- Música -->
+<audio id="musica" loop>
+  <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_5e3b1e6a4f.mp3?filename=wedding-piano-110624.mp3" type="audio/mp3">
+</audio>
 
+<button id="musicBtn" class="music-btn">🎵 Activar música</button>
+
+<section class="hero">
+  <h1>Nos Casamos</h1>
+  <h2>ALEJANDRO & ___</h2>
+  <p class="fecha">20 de Diciembre 2026</p>
+
+  <div class="contador" id="contador"></div>
+
+  <a class="btn" href="https://wa.me/573000000000?text=Confirmo%20mi%20asistencia%20a%20la%20boda" target="_blank">
+    Confirmar asistencia
+  </a>
+</section>
+
+<footer>
+  Con amor 💍
+</footer>
+
+<script src="script.js"></script>
 </body>
 </html>
