@@ -667,77 +667,91 @@
             }
         }
 
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 12px;
-        }
+        /* ===== GALERÍA CON IMÁGENES AJUSTADAS ===== */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+}
 
-        @media (min-width: 768px) {
-            .gallery-grid {
-                grid-template-columns: repeat(3, 1fr);
-                gap: 20px;
-            }
-        }
+@media (min-width: 768px) {
+    .gallery-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+    }
+}
 
-        .gallery-item {
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 
-                0 10px 25px rgba(0, 0, 0, 0.1),
-                0 0 0 1px rgba(255, 255, 255, 0.5),
-                inset 0 1px 5px rgba(255, 255, 255, 0.6);
-            position: relative;
-            transition: all 0.3s ease;
-        }
-        
-        .gallery-item:hover {
-            box-shadow: 
-                0 20px 40px rgba(0, 0, 0, 0.15),
-                0 0 0 1px rgba(255, 255, 255, 0.5),
-                inset 0 1px 5px rgba(255, 255, 255, 0.6);
-            transform: translateY(-5px);
-        }
+.gallery-item {
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1), 0 0 0 1px rgba(255,255,255,0.5);
+    position: relative;
+    transition: all 0.3s ease;
+    background: #f0f9f7; /* color de fondo suave mientras carga */
+}
 
-        .gallery-item-large {
-            grid-column: span 2;
-            grid-row: span 2;
-        }
+.gallery-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.15), 0 0 0 1px rgba(255,255,255,0.5);
+}
 
-        .gallery-item-wide {
-            grid-column: span 2;
-        }
+/* contenedor de imagen que respeta proporciones */
+.gallery-image {
+    width: 100%;
+    height: auto;           /* altura automática según la imagen */
+    display: block;
+    object-fit: cover;      /* cubre el contenedor sin deformar */
+    object-position: center;
+    transition: transform 0.7s;
+}
 
-        .gallery-image {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            background: var(--muted);
-            transition: transform 0.7s;
-        }
+/* cuando la imagen es más panorámica, la ajustamos */
+.gallery-item-large .gallery-image {
+    width: 100%;
+    height: auto;
+    max-height: 100%;
+}
 
-        .gallery-item:hover .gallery-image {
-            transform: scale(1.05);
-        }
+.gallery-item-wide .gallery-image {
+    width: 100%;
+    height: auto;
+}
 
-        .gallery-placeholder {
-            aspect-ratio: 1/1;
-            background: rgba(100, 201, 184, 0.05);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            color: var(--muted-foreground);
-        }
+/* placeholders (mantienen proporción de diseño) */
+.gallery-placeholder {
+    aspect-ratio: 1/1;
+    background: rgba(100, 201, 184, 0.05);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    color: var(--muted-foreground);
+    width: 100%;
+}
 
-        .gallery-placeholder-wide {
-            aspect-ratio: 2/1;
-        }
+.gallery-placeholder-wide {
+    aspect-ratio: 2/1;
+}
 
-        .gallery-placeholder-large {
-            aspect-ratio: 4/3;
-        }
+.gallery-placeholder-large {
+    aspect-ratio: 4/3;
+}
+
+.placeholder-icon {
+    width: 32px;
+    height: 32px;
+    stroke: currentColor;
+    stroke-width: 1;
+    fill: none;
+    opacity: 0.4;
+}
+
+.placeholder-text {
+    font-size: 0.75rem;
+    letter-spacing: 0.05em;
+    opacity: 0.5;
+}
 
         .placeholder-icon {
             width: 32px;
