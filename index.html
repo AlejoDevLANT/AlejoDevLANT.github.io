@@ -3477,7 +3477,7 @@
             }
             
             // Imágenes de la galería (solo las que tienen src real)
-            const galleryImgs = document.querySelectorAll('.gallery-item img');
+            const galleryImgs = document.querySelectorAll('.gallery-item img, .photo-card img');
             galleryImgs.forEach(img => {
                 if (img.src && !img.src.includes('placeholder') && img.complete) {
                     imageElements.push(img);
