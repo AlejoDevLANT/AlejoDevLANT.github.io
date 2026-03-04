@@ -1421,6 +1421,8 @@ function updateCountdown() {
         const imageObserver = new MutationObserver(function() {
             initLightbox();
         });
+        updateCountdown(); // Ejecuta inmediatamente
+        setInterval(updateCountdown, 1000); // Actualiza cada segundo
         imageObserver.observe(document.body, {
             childList: true,
             subtree: true,
