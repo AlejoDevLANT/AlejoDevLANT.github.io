@@ -263,11 +263,10 @@
             opacity: 0; transform: translateY(20px); animation: photoReveal 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
         }
 .photo-card:hover { 
-    transform: translateY(-3px) scale(1.01); /* Menos movimiento */
-    box-shadow: 0 15px 30px rgba(100,201,184,0.15), 0 4px 12px rgba(0,0,0,0.08), 0 0 0 1px rgba(100,201,184,0.2), inset 0 1px 0 rgba(255,255,255,0.6); /* Sombra más suave */
+    transform: translateY(-6px) scale(1.02); 
+    box-shadow: 0 20px 50px rgba(100,201,184,0.22), 0 8px 20px rgba(0,0,0,0.1), 0 0 0 2px rgba(100,201,184,0.25), inset 0 1px 0 rgba(255,255,255,0.8); 
     z-index: 5; 
-    transition: all 0.3s ease; /* Transición más rápida */
-}        .photo-card-1 { animation-delay: 0.1s; }
+}     .photo-card-1 { animation-delay: 0.1s; }
         .photo-card-2 { animation-delay: 0.15s; }
         .photo-card-3 { animation-delay: 0.2s; }
         .photo-card-4 { animation-delay: 0.25s; }
@@ -278,7 +277,7 @@
         @keyframes photoReveal { to { opacity: 1; transform: translateY(0); } }
         .photo-card-img { width: 100%; height: 100%; min-height: 160px; object-fit: cover; display: block; transition: transform 0.6s ease; }
        .photo-card:hover .photo-card-img { 
-    transform: scale(1.03); /* Menos zoom (de 1.06 a 1.03) */
+    transform: scale(1.06); 
 }
         .photo-placeholder { 
             width: 100%; min-height: 160px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; 
