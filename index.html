@@ -57,10 +57,38 @@
         .decorative-line-top { position: relative; z-index: 10; display: flex; flex-direction: column; align-items: center; margin-bottom: 32px; }
         .line-vertical { width: 1px; height: 64px; background: var(--turquoise); opacity: 0.5; }
         .diamond-small { width: 8px; height: 8px; border: 2px solid var(--turquoise); transform: rotate(45deg); opacity: 0.6; margin-top: 8px; box-shadow: 0 0 15px rgba(100, 201, 184, 0.3); }
-        .subtitle { position: relative; z-index: 10; font-family: 'Raleway', sans-serif; font-size: 0.875rem; text-transform: uppercase; letter-spacing: 0.5em; color: var(--turquoise-dark); font-weight: 400; }
-        .hero-names { position: relative; z-index: 10; margin-top: 24px; text-align: center; }
-        .hero-names h1 { font-family: 'Cormorant Garamond', Georgia, serif; font-size: clamp(3rem, 10vw, 6rem); font-weight: 400; line-height: 1.3; letter-spacing: 0.08em; color: var(--primary); }
-        .ampersand { display: block; margin: 20px 0; font-family: 'Great Vibes', cursive; font-size: clamp(2rem, 6vw, 3.5rem); font-style: normal; color: var(--turquoise); font-weight: 400; }
+        
+        /* --- MEJORA: "NOS CASAMOS" MÁS GRANDE QUE LOS NOMBRES --- */
+        .subtitle { 
+            position: relative; z-index: 10; 
+            font-family: 'Raleway', sans-serif; 
+            font-size: clamp(1.8rem, 5vw, 3.2rem); /* Aumentado drásticamente */
+            text-transform: uppercase; 
+            letter-spacing: 0.3em; 
+            color: var(--turquoise-dark); 
+            font-weight: 500; 
+            margin-bottom: 10px;
+            text-shadow: 0 2px 5px rgba(255,255,255,0.5);
+        }
+        .hero-names { 
+            position: relative; z-index: 10; margin-top: 10px; text-align: center; 
+        }
+        .hero-names h1 { 
+            font-family: 'Cormorant Garamond', Georgia, serif; 
+            font-size: clamp(2.2rem, 7vw, 4rem); /* Reducido para que sea más pequeño que el subtitle */
+            font-weight: 400; 
+            line-height: 1.3; 
+            letter-spacing: 0.08em; 
+            color: var(--primary); 
+        }
+        .ampersand { 
+            display: block; margin: 10px 0; 
+            font-family: 'Great Vibes', cursive; 
+            font-size: clamp(1.8rem, 5vw, 3rem); /* ampersand más pequeño también */
+            font-style: normal; color: var(--turquoise); font-weight: 400; 
+        }
+        /* ---------------------------------------- */
+
         .hero-date { position: relative; z-index: 10; margin-top: 40px; display: flex; align-items: center; gap: 16px; }
         .line-horizontal { width: 80px; height: 1px; background: var(--turquoise); opacity: 0.5; }
         .date-text { font-family: 'Raleway', sans-serif; font-size: clamp(1rem, 3vw, 1.25rem); letter-spacing: 0.15em; color: var(--turquoise-dark); white-space: nowrap; font-weight: 400; }
@@ -138,7 +166,7 @@
         .section-title { margin-top: 16px; font-family: 'Cormorant Garamond', Georgia, serif; font-size: clamp(1.875rem, 5vw, 3rem); font-weight: 500; letter-spacing: 0.05em; color: var(--primary); max-width: 600px; }
         .section-line { margin-top: 24px; width: 64px; height: 2px; background: var(--turquoise); opacity: 0.7; }
 
-        /* Photo Gallery */
+        /* Photo Gallery - MODIFICADA PARA 8 FOTOS */
         .gallery-section { padding: 100px 16px; position: relative; overflow: hidden; }
         .gallery-section::before {
             content: ''; position: absolute; inset: 0;
@@ -192,22 +220,32 @@
         @keyframes shutterWave { 0%, 80%, 100% { opacity: 0; width: 20px; height: 20px; } 83% { opacity: 0.8; width: 30px; height: 30px; } 90% { opacity: 0; width: 55px; height: 55px; } }
         @keyframes diamondPulse { 0%, 100% { transform: rotate(45deg) scale(1); box-shadow: 0 0 12px rgba(100,201,184,0.5); } 50% { transform: rotate(45deg) scale(1.3); box-shadow: 0 0 20px rgba(100,201,184,0.8); } }
 
-        .gallery-mosaic { display: grid; grid-template-columns: repeat(6, 1fr); gap: 14px; }
-        .photo-card-hero { grid-column: 1 / 5; grid-row: 1 / 3; }
-        .photo-card-side-1 { grid-column: 5 / 7; grid-row: 1 / 2; }
-        .photo-card-side-2 { grid-column: 5 / 7; grid-row: 2 / 3; }
-        .photo-card-bottom-1 { grid-column: 1 / 3; grid-row: 3 / 4; }
-        .photo-card-bottom-2 { grid-column: 3 / 5; grid-row: 3 / 4; }
-        .photo-card-bottom-3 { grid-column: 5 / 7; grid-row: 3 / 4; }
+        /* NUEVO GRID PARA 8 FOTOS */
+        .gallery-mosaic { 
+            display: grid; 
+            grid-template-columns: repeat(4, 1fr); 
+            gap: 14px; 
+        }
+        /* Distribución atractiva: foto grande en posición 1-2, luego 6 medianas */
+        .photo-card-1 { grid-column: span 2; grid-row: span 2; } /* foto principal grande */
+        .photo-card-2 { grid-column: span 1; grid-row: span 1; }
+        .photo-card-3 { grid-column: span 1; grid-row: span 1; }
+        .photo-card-4 { grid-column: span 1; grid-row: span 1; }
+        .photo-card-5 { grid-column: span 1; grid-row: span 1; }
+        .photo-card-6 { grid-column: span 1; grid-row: span 1; }
+        .photo-card-7 { grid-column: span 2; grid-row: span 1; } /* foto más ancha abajo */
+        .photo-card-8 { grid-column: span 2; grid-row: span 1; } /* foto más ancha abajo */
 
         @media (max-width: 700px) {
-            .gallery-mosaic { grid-template-columns: repeat(2, 1fr); gap: 10px; }
-            .photo-card-hero { grid-column: 1 / 3; grid-row: 1 / 2; }
-            .photo-card-side-1 { grid-column: 1 / 2; grid-row: 2 / 3; }
-            .photo-card-side-2 { grid-column: 2 / 3; grid-row: 2 / 3; }
-            .photo-card-bottom-1 { grid-column: 1 / 2; grid-row: 3 / 4; }
-            .photo-card-bottom-2 { grid-column: 2 / 3; grid-row: 3 / 4; }
-            .photo-card-bottom-3 { grid-column: 1 / 3; grid-row: 4 / 5; }
+            .gallery-mosaic { grid-template-columns: repeat(2, 1fr); }
+            .photo-card-1 { grid-column: 1 / 3; grid-row: 1 / 2; }
+            .photo-card-2 { grid-column: 1 / 2; grid-row: 2 / 3; }
+            .photo-card-3 { grid-column: 2 / 3; grid-row: 2 / 3; }
+            .photo-card-4 { grid-column: 1 / 2; grid-row: 3 / 4; }
+            .photo-card-5 { grid-column: 2 / 3; grid-row: 3 / 4; }
+            .photo-card-6 { grid-column: 1 / 3; grid-row: 4 / 5; }
+            .photo-card-7 { grid-column: 1 / 2; grid-row: 5 / 6; }
+            .photo-card-8 { grid-column: 2 / 3; grid-row: 5 / 6; }
             .gallery-album-frame { padding: 35px 20px 30px; }
             .camera-badge { padding: 10px 22px; gap: 10px; }
             .camera-svg-wrapper { width: 34px; height: 34px; }
@@ -225,19 +263,24 @@
             opacity: 0; transform: translateY(20px); animation: photoReveal 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
         }
         .photo-card:hover { transform: translateY(-6px) scale(1.02); box-shadow: 0 20px 50px rgba(100,201,184,0.22), 0 8px 20px rgba(0,0,0,0.1), 0 0 0 2px rgba(100,201,184,0.25), inset 0 1px 0 rgba(255,255,255,0.8); z-index: 5; }
-        .photo-card-hero { animation-delay: 0.1s; }
-        .photo-card-side-1 { animation-delay: 0.2s; }
-        .photo-card-side-2 { animation-delay: 0.3s; }
-        .photo-card-bottom-1 { animation-delay: 0.35s; }
-        .photo-card-bottom-2 { animation-delay: 0.45s; }
-        .photo-card-bottom-3 { animation-delay: 0.55s; }
+        .photo-card-1 { animation-delay: 0.1s; }
+        .photo-card-2 { animation-delay: 0.15s; }
+        .photo-card-3 { animation-delay: 0.2s; }
+        .photo-card-4 { animation-delay: 0.25s; }
+        .photo-card-5 { animation-delay: 0.3s; }
+        .photo-card-6 { animation-delay: 0.35s; }
+        .photo-card-7 { animation-delay: 0.4s; }
+        .photo-card-8 { animation-delay: 0.45s; }
         @keyframes photoReveal { to { opacity: 1; transform: translateY(0); } }
-        .photo-card-img { width: 100%; height: 100%; min-height: 180px; object-fit: cover; display: block; transition: transform 0.6s ease; }
+        .photo-card-img { width: 100%; height: 100%; min-height: 160px; object-fit: cover; display: block; transition: transform 0.6s ease; }
         .photo-card:hover .photo-card-img { transform: scale(1.06); }
-        .photo-placeholder { width: 100%; min-height: 180px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; background: linear-gradient(135deg, rgba(100,201,184,0.06) 0%, rgba(100,201,184,0.03) 100%); padding: 30px 20px; }
-        .photo-card-hero .photo-placeholder { min-height: 360px; }
-        .photo-card-side-1 .photo-placeholder, .photo-card-side-2 .photo-placeholder { min-height: 175px; }
-        .photo-card-bottom-1 .photo-placeholder, .photo-card-bottom-2 .photo-placeholder, .photo-card-bottom-3 .photo-placeholder { min-height: 180px; }
+        .photo-placeholder { 
+            width: 100%; min-height: 160px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; 
+            background: linear-gradient(135deg, rgba(100,201,184,0.06) 0%, rgba(100,201,184,0.03) 100%); padding: 20px; 
+        }
+        .photo-card-1 .photo-placeholder { min-height: 340px; } /* más grande para la principal */
+        .photo-card-7 .photo-placeholder,
+        .photo-card-8 .photo-placeholder { min-height: 180px; } /* altura media */
         .placeholder-camera-icon { font-size: 2rem; color: var(--turquoise); opacity: 0.4; transition: all 0.3s; }
         .photo-card:hover .placeholder-camera-icon { opacity: 0.7; transform: scale(1.15); }
         .placeholder-label { font-family: 'Raleway', sans-serif; font-size: 0.75rem; letter-spacing: 0.12em; color: var(--muted-foreground); opacity: 0.6; text-align: center; text-transform: uppercase; }
@@ -513,84 +556,6 @@
         @media (max-width: 768px) { .bible-verse-card { padding: 50px 30px; } .bible-verse-quote-open { font-size: 5rem; top: 20px; left: 20px; } .bible-verse-quote-close { font-size: 5rem; bottom: 5px; right: 20px; } .bible-verse-reference::before, .bible-verse-reference::after { width: 30px; } }
 
         /* ============================
-           ANIMACION RECEPCIÓN (NUEVA)
-           ============================ */
-        .reception-section {
-            padding: 80px 16px;
-            background: radial-gradient(circle at 20% 30%, rgba(100, 201, 184, 0.15) 0%, transparent 50%),
-                radial-gradient(circle at 80% 70%, rgba(100, 201, 184, 0.12) 0%, transparent 50%),
-                linear-gradient(135deg, rgba(229, 249, 247, 0.7) 0%, rgba(195, 236, 231, 0.6) 50%, rgba(229, 249, 247, 0.7) 100%);
-            position: relative;
-            overflow: hidden;
-        }
-        .reception-section::before { content: ''; position: absolute; inset: 0; background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><g opacity="0.05" fill="%2364C9B8"><circle cx="50" cy="50" r="2"/><circle cx="150" cy="150" r="3"/><path d="M80,80 Q90,70 100,80 T120,80"/></g></svg>'); background-size: 200px 200px; }
-        .reception-container { max-width: 700px; margin: 0 auto; position: relative; z-index: 10; animation: receptionFadeUp 1s ease-out; }
-        @keyframes receptionFadeUp {
-            0% { opacity: 0; transform: translateY(40px); }
-            100% { opacity: 1; transform: translateY(0); }
-        }
-        .reception-card {
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(249, 254, 253, 0.9) 100%);
-            backdrop-filter: blur(20px); border-radius: 30px; padding: 60px 40px;
-            box-shadow: 0 30px 80px rgba(100, 201, 184, 0.2), 0 0 0 1px rgba(100, 201, 184, 0.15), inset 0 2px 30px rgba(255, 255, 255, 0.9);
-            border: 2px solid rgba(100, 201, 184, 0.2); text-align: center;
-        }
-        .reception-title { font-family: 'Great Vibes', cursive; font-size: clamp(2.5rem, 7vw, 4rem); font-weight: 400; color: var(--turquoise-dark); margin-bottom: 30px; text-shadow: 0 2px 4px rgba(100, 201, 184, 0.2); }
-        .reception-animation-icon {
-            font-size: 70px;
-            color: var(--turquoise);
-            margin-bottom: 25px;
-            filter: drop-shadow(0 4px 8px rgba(100, 201, 184, 0.4));
-            animation: receptionBounce 2.5s cubic-bezier(0.36, 0.07, 0.19, 0.97) infinite;
-        }
-        @keyframes receptionBounce {
-            0%, 100% { transform: translateY(0) scale(1); }
-            10% { transform: translateY(-15px) scale(1.1); }
-            20% { transform: translateY(0) scale(0.98); }
-            30% { transform: translateY(-8px) scale(1.05); }
-            40% { transform: translateY(0) scale(1); }
-            50% { transform: translateY(-4px) scale(1.02); }
-            60% { transform: translateY(0) scale(1); }
-        }
-        .reception-highlight {
-            background: linear-gradient(135deg, rgba(100, 201, 184, 0.12) 0%, rgba(100, 201, 184, 0.05) 100%);
-            border-radius: 50px;
-            padding: 20px 30px;
-            margin: 30px 0;
-            border: 1px solid rgba(100, 201, 184, 0.2);
-            animation: receptionPulse 3s ease-in-out infinite;
-        }
-        @keyframes receptionPulse {
-            0%, 100% { box-shadow: 0 0 0 0 rgba(100, 201, 184, 0.3); }
-            50% { box-shadow: 0 0 25px 10px rgba(100, 201, 184, 0.1); }
-        }
-        .reception-highlight p { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.3rem; color: var(--primary); }
-        .reception-confetti {
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            pointer-events: none;
-            overflow: hidden;
-        }
-        .reception-confetti span {
-            position: absolute;
-            width: 10px; height: 10px;
-            background: var(--turquoise-light);
-            opacity: 0.4;
-            border-radius: 50%;
-            animation: confettiFall 6s linear infinite;
-        }
-        .reception-confetti span:nth-child(1) { left: 10%; top: -20px; animation-delay: 0s; background: #ffb3ba; }
-        .reception-confetti span:nth-child(2) { left: 30%; top: -20px; animation-delay: 1s; background: #bae1ff; }
-        .reception-confetti span:nth-child(3) { left: 50%; top: -20px; animation-delay: 2s; background: #baffc9; }
-        .reception-confetti span:nth-child(4) { left: 70%; top: -20px; animation-delay: 3s; background: #ffdfba; }
-        .reception-confetti span:nth-child(5) { left: 90%; top: -20px; animation-delay: 4s; background: #d4b8ff; }
-        @keyframes confettiFall {
-            0% { transform: translateY(0) rotate(0deg); opacity: 0.6; }
-            80% { opacity: 0.8; }
-            100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
-        }
-
-        /* ============================
            UBICACIÓN ANIMADA (mejorada)
            ============================ */
         .location-section {
@@ -819,6 +784,7 @@
             <div class="line-vertical"></div>
             <div class="diamond-small"></div>
         </div>
+        <!-- "NOS CASAMOS" MÁS GRANDE -->
         <p class="subtitle">Nos Casamos</p>
         <div class="hero-names">
             <h1>JESUS <span class="ampersand">&</span> YULEIMA</h1>
@@ -902,27 +868,6 @@
 
     <div class="section-divider"><div class="divider-line"></div><div class="divider-diamond"></div><div class="divider-line"></div></div>
 
-    <!-- NUEVA SECCIÓN: RECEPCIÓN (con animación elegante) -->
-    <section class="reception-section">
-        <div class="reception-container">
-            <div class="reception-card">
-                <div class="reception-animation-icon"><i class="fa-solid fa-champagne-glasses"></i></div>
-                <h2 class="reception-title">Recepción</h2>
-                <p class="gift-message" style="max-width:500px; margin:0 auto;">Después de la ceremonia, celebremos juntos con un brindis, música y alegría. ¡Os esperamos!</p>
-                <div class="reception-highlight">
-                    <p><i class="fa-regular fa-clock"></i> 7:30 PM — ¡A celebrar!</p>
-                </div>
-                <div class="decorative-small" style="margin-top: 20px;"><div class="line"></div><div class="dot"></div><div class="line"></div></div>
-            </div>
-        </div>
-        <!-- Pequeño confeti animado -->
-        <div class="reception-confetti">
-            <span></span><span></span><span></span><span></span><span></span>
-        </div>
-    </section>
-
-    <div class="section-divider"><div class="divider-line"></div><div class="divider-diamond"></div><div class="divider-line"></div></div>
-
     <!-- Ubicación Section - CON ICONO ANIMADO -->
     <section class="location-section">
         <div class="location-container">
@@ -956,7 +901,7 @@
 
     <div class="section-divider"><div class="divider-line"></div><div class="divider-diamond"></div><div class="divider-line"></div></div>
 
-    <!-- Photo Gallery -->
+    <!-- Photo Gallery - AHORA CON 8 FOTOS -->
     <section class="gallery-section">
         <div class="gallery-container">
             <div class="gallery-header">
@@ -1002,42 +947,63 @@
                     <div class="album-corner album-corner-bl"></div>
                     <div class="album-corner album-corner-br"></div>
 
+                    <!-- 8 FOTOS: 1 grande, 4 medianas, 3 más abajo -->
                     <div class="gallery-mosaic">
-                        <div class="photo-card photo-card-hero zoomable" data-lightbox="true">
-                            <img src="https://raw.githubusercontent.com/AlejoDevLANT/AlejoDevLANT.github.io/main/imagenprovisional.jpg" class="photo-card-img" alt="Jesus y Yuleima - Foto 1" style="min-height:360px;">
+                        <!-- Foto 1 - principal (con imagen real) -->
+                        <div class="photo-card photo-card-1 zoomable" data-lightbox="true">
+                            <img src="https://raw.githubusercontent.com/AlejoDevLANT/AlejoDevLANT.github.io/main/imagenprovisional.jpg" class="photo-card-img" alt="Jesus y Yuleima - Foto 1" style="min-height:340px;">
                             <div class="photo-card-overlay"></div>
                             <div class="photo-zoom-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
                             <span class="photo-number">01</span>
                         </div>
-                        <div class="photo-card photo-card-side-1 zoomable" data-lightbox="true">
-                            <img src="https://raw.githubusercontent.com/AlejoDevLANT/AlejoDevLANT.github.io/main/imagenprovisional.jpg" class="photo-card-img" alt="Jesus y Yuleima - Foto 2" style="min-height:175px;">
+                        <!-- Foto 2 -->
+                        <div class="photo-card photo-card-2 zoomable" data-lightbox="true">
+                            <img src="https://raw.githubusercontent.com/AlejoDevLANT/AlejoDevLANT.github.io/main/imagenprovisional.jpg" class="photo-card-img" alt="Jesus y Yuleima - Foto 2" style="min-height:160px;">
                             <div class="photo-card-overlay"></div>
                             <div class="photo-zoom-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
                             <span class="photo-number">02</span>
                         </div>
-                        <div class="photo-card photo-card-side-2 zoomable" data-lightbox="true">
-                            <img src="https://raw.githubusercontent.com/AlejoDevLANT/AlejoDevLANT.github.io/main/imagenprovisional.jpg" class="photo-card-img" alt="Jesus y Yuleima - Foto 3" style="min-height:175px;">
+                        <!-- Foto 3 -->
+                        <div class="photo-card photo-card-3 zoomable" data-lightbox="true">
+                            <img src="https://raw.githubusercontent.com/AlejoDevLANT/AlejoDevLANT.github.io/main/imagenprovisional.jpg" class="photo-card-img" alt="Jesus y Yuleima - Foto 3" style="min-height:160px;">
                             <div class="photo-card-overlay"></div>
                             <div class="photo-zoom-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
                             <span class="photo-number">03</span>
                         </div>
-                        <div class="photo-card photo-card-bottom-1">
+                        <!-- Foto 4 (placeholder) -->
+                        <div class="photo-card photo-card-4">
                             <div class="photo-placeholder"><i class="fa-solid fa-camera placeholder-camera-icon"></i><span class="placeholder-label">Tu foto aquí</span></div>
                             <div class="photo-card-overlay"></div>
                             <div class="photo-zoom-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
                             <span class="photo-number">04</span>
                         </div>
-                        <div class="photo-card photo-card-bottom-2">
+                        <!-- Foto 5 (placeholder) -->
+                        <div class="photo-card photo-card-5">
                             <div class="photo-placeholder"><i class="fa-solid fa-camera placeholder-camera-icon"></i><span class="placeholder-label">Tu foto aquí</span></div>
                             <div class="photo-card-overlay"></div>
                             <div class="photo-zoom-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
                             <span class="photo-number">05</span>
                         </div>
-                        <div class="photo-card photo-card-bottom-3">
+                        <!-- Foto 6 (placeholder) -->
+                        <div class="photo-card photo-card-6">
                             <div class="photo-placeholder"><i class="fa-solid fa-camera placeholder-camera-icon"></i><span class="placeholder-label">Tu foto aquí</span></div>
                             <div class="photo-card-overlay"></div>
                             <div class="photo-zoom-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
                             <span class="photo-number">06</span>
+                        </div>
+                        <!-- Foto 7 (placeholder) -->
+                        <div class="photo-card photo-card-7">
+                            <div class="photo-placeholder"><i class="fa-solid fa-camera placeholder-camera-icon"></i><span class="placeholder-label">Tu foto aquí</span></div>
+                            <div class="photo-card-overlay"></div>
+                            <div class="photo-zoom-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+                            <span class="photo-number">07</span>
+                        </div>
+                        <!-- Foto 8 (placeholder) -->
+                        <div class="photo-card photo-card-8">
+                            <div class="photo-placeholder"><i class="fa-solid fa-camera placeholder-camera-icon"></i><span class="placeholder-label">Tu foto aquí</span></div>
+                            <div class="photo-card-overlay"></div>
+                            <div class="photo-zoom-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+                            <span class="photo-number">08</span>
                         </div>
                     </div>
 
