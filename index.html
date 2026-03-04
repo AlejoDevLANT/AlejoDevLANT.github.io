@@ -62,7 +62,7 @@
         .subtitle { 
             position: relative; z-index: 10; 
             font-family: 'Raleway', sans-serif; 
-            font-size: clamp(1.8rem, 5vw, 3.2rem); /* Aumentado drásticamente */
+           font-size: 0.875rem; /* Aumentado drásticamente */
             text-transform: uppercase; 
             letter-spacing: 0.3em; 
             color: var(--turquoise-dark); 
@@ -84,7 +84,7 @@
         .ampersand { 
             display: block; margin: 10px 0; 
             font-family: 'Great Vibes', cursive; 
-            font-size: clamp(1.8rem, 5vw, 3rem); /* ampersand más pequeño también */
+           font-size: clamp(3rem, 10vw, 6rem); /* ampersand más pequeño también */
             font-style: normal; color: var(--turquoise); font-weight: 400; 
         }
         /* ---------------------------------------- */
@@ -262,8 +262,12 @@
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             opacity: 0; transform: translateY(20px); animation: photoReveal 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
         }
-        .photo-card:hover { transform: translateY(-6px) scale(1.02); box-shadow: 0 20px 50px rgba(100,201,184,0.22), 0 8px 20px rgba(0,0,0,0.1), 0 0 0 2px rgba(100,201,184,0.25), inset 0 1px 0 rgba(255,255,255,0.8); z-index: 5; }
-        .photo-card-1 { animation-delay: 0.1s; }
+.photo-card:hover { 
+    transform: translateY(-3px) scale(1.01); /* Menos movimiento */
+    box-shadow: 0 15px 30px rgba(100,201,184,0.15), 0 4px 12px rgba(0,0,0,0.08), 0 0 0 1px rgba(100,201,184,0.2), inset 0 1px 0 rgba(255,255,255,0.6); /* Sombra más suave */
+    z-index: 5; 
+    transition: all 0.3s ease; /* Transición más rápida */
+}        .photo-card-1 { animation-delay: 0.1s; }
         .photo-card-2 { animation-delay: 0.15s; }
         .photo-card-3 { animation-delay: 0.2s; }
         .photo-card-4 { animation-delay: 0.25s; }
@@ -273,7 +277,9 @@
         .photo-card-8 { animation-delay: 0.45s; }
         @keyframes photoReveal { to { opacity: 1; transform: translateY(0); } }
         .photo-card-img { width: 100%; height: 100%; min-height: 160px; object-fit: cover; display: block; transition: transform 0.6s ease; }
-        .photo-card:hover .photo-card-img { transform: scale(1.06); }
+       .photo-card:hover .photo-card-img { 
+    transform: scale(1.03); /* Menos zoom (de 1.06 a 1.03) */
+}
         .photo-placeholder { 
             width: 100%; min-height: 160px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; 
             background: linear-gradient(135deg, rgba(100,201,184,0.06) 0%, rgba(100,201,184,0.03) 100%); padding: 20px; 
@@ -839,7 +845,8 @@
                     <span class="countdown-colon">:</span>
                     <div class="countdown-unit"><span class="countdown-value" id="seconds">00</span><span class="countdown-unit-label">Seg</span></div>
                 </div>
-                <p class="countdown-message">Para el dia mas especial de nuestras vidas</p>
+           <!-- Mensaje dinámico del contador -->
+            <p class="countdown-message" id="dynamicMessage">Para el dia mas especial de nuestras vidas</p>
                 <div class="decorative-small" style="margin-top: 32px; margin-bottom: 0;"><div class="line"></div><div class="dot"></div><div class="line"></div></div>
             </div>
         </div>
@@ -1198,27 +1205,47 @@
 
     <script>
         // Countdown Timer
-        function updateCountdown() {
-            const weddingDate = new Date('March 21, 2026 18:30:00').getTime();
-            const now = new Date().getTime();
-            const distance = weddingDate - now;
-            if (distance < 0) {
-                ['days','hours','minutes','seconds'].forEach(id => document.getElementById(id).textContent = '00');
-                return;
-            }
-            document.getElementById('days').textContent = String(Math.floor(distance / (1000 * 60 * 60 * 24))).padStart(2, '0');
-            document.getElementById('hours').textContent = String(Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))).padStart(2, '0');
-            document.getElementById('minutes').textContent = String(Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, '0');
-            document.getElementById('seconds').textContent = String(Math.floor((distance % (1000 * 60)) / 1000)).padStart(2, '0');
+        // Countdown Timer con mensajes personalizados
+function updateCountdown() {
+    const weddingDate = new Date('March 21, 2026 18:30:00').getTime();
+    const now = new Date().getTime();
+    const distance = weddingDate - now;
+    
+    // Calcular días restantes
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    
+    // Actualizar contador
+    document.getElementById('days').textContent = String(days).padStart(2, '0');
+    document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+    document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+    document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+    
+    // ===== NUEVO: Mensajes personalizados según el tiempo =====
+    const messageElement = document.getElementById('dynamicMessage');
+    
+    if (distance < 0) {
+        messageElement.textContent = '¡Hoy es el gran día! 💒✨';
+    } else if (days === 0 && hours < 24) {
+        if (hours === 0 && minutes < 60) {
+            messageElement.textContent = '¡En minutos comenzamos! ⏰💕';
+        } else {
+            messageElement.textContent = '¡MAÑANA es el gran día! 🎉🥂';
         }
-        updateCountdown();
-        setInterval(updateCountdown, 1000);
-
-        // Scroll indicator
-        document.querySelector('.scroll-indicator').addEventListener('click', function() {
-            window.scrollTo({ top: window.innerHeight, behavior: 'smooth' });
-        });
-
+    } else if (days < 7) {
+        messageElement.textContent = '¡Esta semana nos casamos! 💑✨';
+    } else if (days < 30) {
+        messageElement.textContent = '¡Falta poquito para el gran día! 💕';
+    } else if (days < 100) {
+        messageElement.textContent = 'Cada día más cerca de nuestro "Sí quiero" 💞';
+    } else if (days < 200) {
+        messageElement.textContent = 'La emoción crece día con día 🌸';
+    } else {
+        messageElement.textContent = 'Para el dia mas especial de nuestras vidas';
+    }
+}
         // Music control
         const musicControl = document.getElementById('musicControl');
         const backgroundMusic = document.getElementById('backgroundMusic');
