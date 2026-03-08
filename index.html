@@ -418,6 +418,7 @@
             border-bottom: 1px solid rgba(255,255,255,0.15);
         }
               /* Tapa delantera (sin cruz) */
+               /* Tapa delantera con texto */
         .bible-front-cover {
             position: absolute;
             left: 16px; top: 0; right: 0; bottom: 0;
@@ -426,37 +427,52 @@
             overflow: hidden;
             box-shadow: inset -2px 0 5px rgba(0,0,0,0.2);
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
+            gap: 8px;
         }
         
         .bible-front-cover::before {
             content: '';
             position: absolute;
             inset: 8px;
-            border: 1px solid rgba(255,255,215,0.15);
+            border: 1px solid rgba(255,255,215,0.2);
             border-radius: 6px;
             pointer-events: none;
+        }
+        
+        /* Texto "BIBLIA" en la tapa */
+        .bible-text {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            letter-spacing: 0.25em;
+            color: rgba(255,245,200,0.9);
+            text-transform: uppercase;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+            z-index: 2;
+            margin-top: 5px;
         }
         
         .bible-title-lines {
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 5px;
+            gap: 4px;
             z-index: 2;
         }
         
         .bible-title-lines span {
             display: block;
             height: 1.5px;
-            background: rgba(255,245,200,0.5);
+            background: rgba(255,245,200,0.4);
             border-radius: 2px;
             box-shadow: 0 0 4px rgba(255,255,200,0.2);
         }
         
-        .bible-title-lines span:nth-child(1) { width: 40px; }
-        .bible-title-lines span:nth-child(2) { width: 30px; }
+        .bible-title-lines span:nth-child(1) { width: 35px; }
+        .bible-title-lines span:nth-child(2) { width: 25px; }
         
         /* Eliminamos todo lo relacionado con .bible-cross */
         /* Páginas animadas (volteándose continuamente) */
@@ -1022,7 +1038,7 @@
                 <div class="bible-verse-quote-close">"</div>
 
                 <!-- Biblia Animada con páginas volteándose -->
-                               <!-- Biblia Animada con páginas volteándose - VERSIÓN SIN CRUZ -->
+                              <!-- Biblia Animada con páginas volteándose - CON TEXTO "BIBLIA" -->
                 <div class="bible-animated-wrapper">
                     <div class="bible-particles">
                         <div class="bible-particle"></div>
@@ -1058,9 +1074,9 @@
                             </div>
                         </div>
                         
-                        <!-- Tapa delantera (sin cruz, más limpia) -->
+                        <!-- Tapa delantera con texto "BIBLIA" -->
                         <div class="bible-front-cover">
-                            <!-- Detalle de líneas decorativas (opcional) -->
+                            <div class="bible-text">BIBLIA</div>
                             <div class="bible-title-lines">
                                 <span></span>
                                 <span></span>
@@ -1068,7 +1084,6 @@
                         </div>
                     </div>
                 </div>
-
                 <p class="bible-verse-text">
                     Uno puede ser vencido, pero dos pueden resistir.<br>
                     La cuerda de tres hilos no se rompe fácilmente.
