@@ -417,61 +417,48 @@
             border-top: 1px solid rgba(255,255,255,0.15);
             border-bottom: 1px solid rgba(255,255,255,0.15);
         }
-        /* Tapa delantera */
+              /* Tapa delantera (sin cruz) */
         .bible-front-cover {
             position: absolute;
             left: 16px; top: 0; right: 0; bottom: 0;
-            background: linear-gradient(135deg, hsl(168, 50%, 32%) 0%, hsl(168, 55%, 26%) 100%);
+            background: linear-gradient(135deg, hsl(168, 55%, 30%) 0%, hsl(168, 60%, 24%) 100%);
             border-radius: 0 12px 12px 0;
             overflow: hidden;
+            box-shadow: inset -2px 0 5px rgba(0,0,0,0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
+        
         .bible-front-cover::before {
             content: '';
             position: absolute;
             inset: 8px;
-            border: 1px solid rgba(255,255,255,0.18);
-            border-radius: 4px;
+            border: 1px solid rgba(255,255,215,0.15);
+            border-radius: 6px;
+            pointer-events: none;
         }
-        /* Cruz dorada */
-        .bible-cross {
-            position: absolute;
-            top: 50%; left: 50%;
-            transform: translate(-50%, -50%);
-            width: 28px; height: 36px;
-        }
-        .bible-cross::before {
-            content: '';
-            position: absolute;
-            left: 50%; top: 0;
-            transform: translateX(-50%);
-            width: 6px; height: 36px;
-            background: linear-gradient(180deg, rgba(255,220,100,0.9) 0%, rgba(255,190,60,0.8) 100%);
-            border-radius: 3px;
-            box-shadow: 0 0 8px rgba(255,200,80,0.4);
-        }
-        .bible-cross::after {
-            content: '';
-            position: absolute;
-            top: 10px; left: 0;
-            width: 28px; height: 6px;
-            background: linear-gradient(90deg, rgba(255,220,100,0.9) 0%, rgba(255,190,60,0.8) 100%);
-            border-radius: 3px;
-            box-shadow: 0 0 8px rgba(255,200,80,0.4);
-        }
-        /* Título en la tapa */
+        
         .bible-title-lines {
-            position: absolute;
-            bottom: 20px; left: 0; right: 0;
-            display: flex; flex-direction: column; align-items: center; gap: 3px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
+            z-index: 2;
         }
+        
         .bible-title-lines span {
             display: block;
             height: 1.5px;
-            background: rgba(255,220,100,0.5);
-            border-radius: 1px;
+            background: rgba(255,245,200,0.5);
+            border-radius: 2px;
+            box-shadow: 0 0 4px rgba(255,255,200,0.2);
         }
+        
         .bible-title-lines span:nth-child(1) { width: 40px; }
         .bible-title-lines span:nth-child(2) { width: 30px; }
+        
+        /* Eliminamos todo lo relacionado con .bible-cross */
         /* Páginas animadas (volteándose continuamente) */
         .bible-pages-container {
             position: absolute;
@@ -1035,6 +1022,7 @@
                 <div class="bible-verse-quote-close">"</div>
 
                 <!-- Biblia Animada con páginas volteándose -->
+                               <!-- Biblia Animada con páginas volteándose - VERSIÓN SIN CRUZ -->
                 <div class="bible-animated-wrapper">
                     <div class="bible-particles">
                         <div class="bible-particle"></div>
@@ -1044,8 +1032,13 @@
                         <div class="bible-particle"></div>
                     </div>
                     <div class="animated-bible">
+                        <!-- Tapa trasera (oscura) -->
                         <div class="bible-back-cover"></div>
+                        
+                        <!-- Lomo decorativo -->
                         <div class="bible-spine"></div>
+                        
+                        <!-- Páginas animadas (se voltean) -->
                         <div class="bible-pages-container">
                             <div class="bible-glow"></div>
                             <div class="bible-page">
@@ -1064,10 +1057,13 @@
                                 </div>
                             </div>
                         </div>
+                        
+                        <!-- Tapa delantera (sin cruz, más limpia) -->
                         <div class="bible-front-cover">
-                            <div class="bible-cross"></div>
+                            <!-- Detalle de líneas decorativas (opcional) -->
                             <div class="bible-title-lines">
-                                <span></span><span></span>
+                                <span></span>
+                                <span></span>
                             </div>
                         </div>
                     </div>
